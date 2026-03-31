@@ -1,5 +1,5 @@
+import 'quran_screen.dart';
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -51,7 +51,14 @@ class _MainScreenState extends State<MainScreen> {
             title: Text("ورد القرآن"),
             subtitle: Text("اقرأ وردك اليومي"),
             trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {},
+            onTap: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => QuranScreen(),
+    ),
+  );
+},
           ),
         ),
 
