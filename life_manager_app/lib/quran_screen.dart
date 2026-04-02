@@ -45,12 +45,38 @@ class _QuranScreenState extends State<QuranScreen> {
             SizedBox(height: 20),
 
            ElevatedButton(
-            onPressed: () {
-  setState(() {
-    if (pagesRead < totalPages) {
+           onPressed: () {
+  if (pagesRead < totalPages) {
+    setState(() {
       pagesRead++;
-    }
-  });
+    });
+  } else {
+    // وصل للهدف
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("🔥 ممتاز!"),
+        content: Text("خلصت وردك 👏\nتحب تكمل وتزود صفحات؟"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("لا"),
+          ),
+          TextButton(
+            onPressed: () {
+              setState(() {
+                totalPages += 1; // تزود الهدف
+              });
+              Navigator.pop(context);
+            },
+            child: Text("أكمل 💪"),
+          ),
+        ],
+      ),
+    );
+  }
 },
   child: Text("بدأت القراءة"),
 ),
