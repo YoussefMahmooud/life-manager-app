@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-class QuranScreen extends StatelessWidget {
+class QuranScreen extends StatefulWidget {
+  @override
+  _QuranScreenState createState() => _QuranScreenState();
+}
+class _QuranScreenState extends State<QuranScreen> {
+  int pagesRead = 0;
+  int totalPages = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +29,7 @@ class QuranScreen extends StatelessWidget {
             Card(
               child: ListTile(
                 title: Text("عدد الصفحات"),
-                subtitle: Text("0 / 2 صفحات"),
+                subtitle: Text("$pagesRead / $totalPages صفحات"),
               ),
             ),
 
@@ -38,10 +44,16 @@ class QuranScreen extends StatelessWidget {
 
             SizedBox(height: 20),
 
-            ElevatedButton(
-              onPressed: () {},
-              child: Text("بدأت القراءة"),
-            ),
+           ElevatedButton(
+            onPressed: () {
+  setState(() {
+    if (pagesRead < totalPages) {
+      pagesRead++;
+    }
+  });
+},
+  child: Text("بدأت القراءة"),
+),
 
           ],
         ),
